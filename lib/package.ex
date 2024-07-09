@@ -45,7 +45,9 @@ defmodule Desktop.Deployment.Package do
     File.rename!(erl, new_name)
 
     # Updating icon
-    cmd!("convert", ["-resize", "64x64", pkg.icon, "icon.ico"])
+      #cmd!("convert", ["-resize", "64x64", pkg.icon, "icon.ico"])
+    cmd!("magick", [ pkg.icon, "-resize", "64x64","icon.ico"])
+
 
     priv_import!(pkg, "icon.ico", strip: false)
 
