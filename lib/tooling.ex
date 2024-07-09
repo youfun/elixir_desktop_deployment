@@ -213,7 +213,7 @@ defmodule Desktop.Deployment.Tooling do
     {:ok, _} = Application.ensure_all_started(:httpoison)
 
     %HTTPoison.Response{body: body, status_code: 200} =
-      HTTPoison.get!(url, [], follow_redirect: true)
+      HTTPoison.get!(url, [], follow_redirect: true, timeout: 3000)
 
     File.write!(filename, body)
   end
